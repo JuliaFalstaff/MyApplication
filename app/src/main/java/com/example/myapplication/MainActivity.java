@@ -13,14 +13,14 @@ import android.widget.TextView;
 import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
     private TextView textViewResult;
-    private TextView textViewCalc;
-    private String lastResult = "";
-    private char operator;
-    private double totalResult = 0.0;
-    private boolean isNewOperator = true;
-
+    float numberOne;
+    float numberTwo;
+    boolean operationAddition;
+    boolean operationSubtract;
+    boolean operationDivide;
+    boolean operatorMultiply;
+    float result;
 
 
     @Override
@@ -28,279 +28,180 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String instanceState;
-        if (savedInstanceState == null) {
-            instanceState = "Первый запуск";
-        } else {
-            instanceState = "Повторный запуск";
-        }
-        Log.d(TAG, "onCreate()");
-
-
-        textViewCalc = findViewById(R.id.textView_calc);
         textViewResult = findViewById(R.id.textView_result);
         Button button1 = findViewById(R.id.button_1);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "1");
+                textViewResult.setText(textViewResult.getText() + "1");
             }
         });
         Button button2 = findViewById(R.id.button_2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "2");
+                textViewResult.setText(textViewResult.getText() + "2");
             }
         });
         Button button3 = findViewById(R.id.button_3);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "3");
+                textViewResult.setText(textViewResult.getText() + "3");
             }
         });
         Button button4 = findViewById(R.id.button_4);
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "4");
+                textViewResult.setText(textViewResult.getText() + "4");
             }
         });
         Button button5 = findViewById(R.id.button_5);
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "5");
+                textViewResult.setText(textViewResult.getText() + "5");
             }
         });
         Button button6 = findViewById(R.id.button_6);
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "6");
+                textViewResult.setText(textViewResult.getText() + "6");
             }
         });
         Button button7 = findViewById(R.id.button_7);
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "7");
+                textViewResult.setText(textViewResult.getText() + "7");
             }
         });
         Button button8 = findViewById(R.id.button_8);
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "8");
+                textViewResult.setText(textViewResult.getText() + "8");
             }
         });
         Button button9 = findViewById(R.id.button_9);
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "9");
+                textViewResult.setText(textViewResult.getText() + "9");
             }
         });
         Button button0 = findViewById(R.id.button_0);
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewOperator) {
-                    textViewCalc.setText("");
-                    isNewOperator = false;
-                }
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + "0");
+                textViewResult.setText(textViewResult.getText() + "0");
             }
         });
+        //Operation Buttons
         Button buttonDividing = findViewById(R.id.button_dividing);
         buttonDividing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isNewOperator = true;
-                operator = '/';
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + '/');
+                numberOne = Float.parseFloat(textViewResult.getText() + "");
+                operationDivide = true;
+                textViewResult.setText(null);
             }
         });
         Button buttonMultiplication = findViewById(R.id.button_multiplication);
         buttonMultiplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isNewOperator = true;
-                operator = '*';
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + '*');
+                numberOne = Float.parseFloat(textViewResult.getText() + "");
+                operatorMultiply = true;
+                textViewResult.setText(null);
             }
         });
-        Button buttonEquals = findViewById(R.id.button_equals);
-        buttonEquals.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                equalsMethod(true);
-            }
 
-            private void equalsMethod(boolean isLast) {
-                double current = Double.parseDouble(textViewResult.getText().toString());
-                double newResult = Double.parseDouble(lastResult);
-                newResult = totalResult;
-                totalResult = (double) getTotalResult(current);
-                if (isLast) {
-                    textViewResult.setText(String.valueOf(lastResult));
-                }
-            }
-
-        });
 
         Button buttonSubtraction = findViewById(R.id.button_subtraction);
         buttonSubtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isNewOperator = true;
-                operator = '-';
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + '-');
+                numberOne = Float.parseFloat(textViewResult.getText() + "");
+                operationSubtract = true;
+                textViewResult.setText(null);
             }
         });
         Button buttonAddition = findViewById(R.id.button_addition);
         buttonAddition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isNewOperator = true;
-                operator = '+';
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + '+');
+                numberOne = Float.parseFloat(textViewResult.getText() + "");
+                operationAddition = true;
+                textViewResult.setText(null);
             }
         });
         Button buttonPoint = findViewById(R.id.button_point);
         buttonPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String lastResult = textViewCalc.getText().toString();
-                textViewCalc.setText(lastResult + '.');
+                textViewResult.setText(textViewResult.getText() + ".");
             }
         });
+
+        Button buttonClear = findViewById(R.id.button_clear);
+        buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textViewResult.setText("");
+            }
+        });
+
+        Button buttonEquals = findViewById(R.id.button_equals);
+        buttonEquals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numberTwo = Float.parseFloat(textViewResult.getText() + "");
+
+                if (operationAddition = true) {
+                    textViewResult.setText(addition() + "");
+                    operationAddition = false;
+                } else if (operationSubtract = true) {
+                    textViewResult.setText(subtract() + "");
+                    operationSubtract = false;
+                } else if (operatorMultiply = true) {
+                    textViewResult.setText(multiply() + "");
+                    operatorMultiply = false;
+                } else if (operationDivide = true) {
+                    textViewResult.setText(divide() + "");
+                    operationDivide = false;
+                }
+
+
+            }
+
+
+        });
+
+
+
+
     }
 
-    public double getTotalResult(double current) {
-        double newResult = Double.parseDouble(lastResult);
-        switch (operator) {
-            case '*':
-                return newResult *= current;
-            break;
-            case '/':
-                return newResult /= current;
-            break;
-            case '+':
-                return newResult += current;
-            break;
-            case '-':
-                return newResult -= current;
-            break;
+    //methods of operations
 
-
-
-        }
-        return newResult;
+    public float divide(){
+        return result = numberOne / numberTwo;
     }
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart()");
+    public float multiply(){
+        return result = numberOne * numberTwo;
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(TAG, "onRestart()");
+    public float subtract(){
+        return result = numberOne - numberTwo;
     }
 
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
+    public float addition(){
+        return result = numberOne + numberTwo;
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPauset()");
-    }
-
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.d(TAG, "onSaveInstanceState()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy()");
-    }
-
-
 }
 
 
