@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     boolean operationSubtract;
     boolean operationDivide;
     boolean operatorMultiply;
-    float result;
+    char arithmeticOperation;
 
 
     @Override
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 numberOne = Float.parseFloat(textViewResult.getText() + "");
                 operationDivide = true;
+                arithmeticOperation = '/';
                 textViewResult.setText(null);
             }
         });
@@ -115,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 numberOne = Float.parseFloat(textViewResult.getText() + "");
                 operatorMultiply = true;
+                arithmeticOperation = '*';
                 textViewResult.setText(null);
             }
         });
@@ -126,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 numberOne = Float.parseFloat(textViewResult.getText() + "");
                 operationSubtract = true;
+                arithmeticOperation = '-';
                 textViewResult.setText(null);
             }
         });
@@ -135,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 numberOne = Float.parseFloat(textViewResult.getText() + "");
                 operationAddition = true;
+                arithmeticOperation = '+';
                 textViewResult.setText(null);
             }
         });
@@ -156,20 +161,21 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonEquals = findViewById(R.id.button_equals);
         buttonEquals.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 numberTwo = Float.parseFloat(textViewResult.getText() + "");
 
-                if (operationAddition = true) {
+                if ((arithmeticOperation == '+' && operationAddition)) {
                     textViewResult.setText(addition() + "");
                     operationAddition = false;
-                } else if (operationSubtract = true) {
+                } else if ((arithmeticOperation == '-' && operationSubtract)) {
                     textViewResult.setText(subtract() + "");
                     operationSubtract = false;
-                } else if (operatorMultiply = true) {
+                } else if ((arithmeticOperation == '*' && operatorMultiply)) {
                     textViewResult.setText(multiply() + "");
                     operatorMultiply = false;
-                } else if (operationDivide = true) {
+                } else if ((arithmeticOperation == '/' && operationDivide)) {
                     textViewResult.setText(divide() + "");
                     operationDivide = false;
                 }
@@ -188,19 +194,19 @@ public class MainActivity extends AppCompatActivity {
     //methods of operations
 
     public float divide(){
-        return result = numberOne / numberTwo;
+        return numberOne /= numberTwo;
     }
 
     public float multiply(){
-        return result = numberOne * numberTwo;
+        return numberOne *= numberTwo;
     }
 
     public float subtract(){
-        return result = numberOne - numberTwo;
+        return numberOne -= numberTwo;
     }
 
     public float addition(){
-        return result = numberOne + numberTwo;
+        return numberOne += numberTwo;
     }
 }
 
