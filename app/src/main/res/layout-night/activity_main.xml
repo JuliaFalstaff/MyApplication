@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_navy_theme"
-    android:theme="@style/DarkAppTheme">
+    tools:context=".MainActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_addition"
@@ -272,6 +272,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_settings"
+        style="@style/CustomButtonMaterialSecondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="DarkAppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="DarkAppTheme" parent="Theme.MaterialComponents">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/dark_navy_theme_main</item>
         <item name="colorPrimaryDark">@color/navy_theme</item>
@@ -13,6 +13,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:textColor">@color/dark_white_theme</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:background">@color/light_navy_theme</item>
     </style>
 
 </resources>

@@ -3,101 +3,103 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 public class MainActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE = 18;
     private TextView textViewResult;
-    float numberOne;
-    float numberTwo;
-    boolean operationAddition;
-    boolean operationSubtract;
-    boolean operationDivide;
-    boolean operatorMultiply;
-    char arithmeticOperation;
-
+    private double numberOne;
+    private double numberTwo;
+    private boolean operationAddition;
+    private boolean operationSubtract;
+    private boolean operationDivide;
+    private boolean operatorMultiply;
+    private char arithmeticOperation;
+    private static final String appTheme = "APP_THEME";
+    private static final String NameSharedPreference = "THEME";
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = getSharedPreferences(NameSharedPreference, SettingsActivity.MODE_PRIVATE);
+        int theme = sharedPreferences.getInt(appTheme,0);
+        setTheme(chooseTheme(theme));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         textViewResult = findViewById(R.id.textView_result);
         Button button1 = findViewById(R.id.button_1);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "1");
+                textViewResult.setText(textViewResult.getText().toString() + "1");
             }
         });
         Button button2 = findViewById(R.id.button_2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "2");
+                textViewResult.setText(textViewResult.getText().toString() + "2");
             }
         });
         Button button3 = findViewById(R.id.button_3);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "3");
+                textViewResult.setText(textViewResult.getText().toString() + "3");
             }
         });
         Button button4 = findViewById(R.id.button_4);
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "4");
+                textViewResult.setText(textViewResult.getText().toString() + "4");
             }
         });
         Button button5 = findViewById(R.id.button_5);
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "5");
+                textViewResult.setText(textViewResult.getText().toString() + "5");
             }
         });
         Button button6 = findViewById(R.id.button_6);
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "6");
+                textViewResult.setText(textViewResult.getText().toString() + "6");
             }
         });
         Button button7 = findViewById(R.id.button_7);
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "7");
+                textViewResult.setText(textViewResult.getText().toString() + "7");
             }
         });
         Button button8 = findViewById(R.id.button_8);
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "8");
+                textViewResult.setText(textViewResult.getText().toString() + "8");
             }
         });
         Button button9 = findViewById(R.id.button_9);
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "9");
+                textViewResult.setText(textViewResult.getText().toString() + "9");
             }
         });
         Button button0 = findViewById(R.id.button_0);
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + "0");
+                textViewResult.setText(textViewResult.getText().toString() + "0");
             }
         });
         //Operation Buttons
@@ -105,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDividing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberOne = Float.parseFloat(textViewResult.getText() + "");
+                numberOne = Double.parseDouble(textViewResult.getText().toString() + "");
                 operationDivide = true;
                 arithmeticOperation = '/';
                 textViewResult.setText(null);
@@ -115,19 +117,17 @@ public class MainActivity extends AppCompatActivity {
         buttonMultiplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberOne = Float.parseFloat(textViewResult.getText() + "");
+                numberOne = Double.parseDouble(textViewResult.getText().toString() + "");
                 operatorMultiply = true;
                 arithmeticOperation = '*';
                 textViewResult.setText(null);
             }
         });
-
-
         Button buttonSubtraction = findViewById(R.id.button_subtraction);
         buttonSubtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberOne = Float.parseFloat(textViewResult.getText() + "");
+                numberOne = Double.parseDouble(textViewResult.getText().toString() + "");
                 operationSubtract = true;
                 arithmeticOperation = '-';
                 textViewResult.setText(null);
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAddition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberOne = Float.parseFloat(textViewResult.getText() + "");
+                numberOne = Double.parseDouble(textViewResult.getText().toString() + "");
                 operationAddition = true;
                 arithmeticOperation = '+';
                 textViewResult.setText(null);
@@ -147,10 +147,9 @@ public class MainActivity extends AppCompatActivity {
         buttonPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewResult.setText(textViewResult.getText() + ".");
+                textViewResult.setText(textViewResult.getText().toString() + ".");
             }
         });
-
         Button buttonClear = findViewById(R.id.button_clear);
         buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,55 +157,103 @@ public class MainActivity extends AppCompatActivity {
                 textViewResult.setText("");
             }
         });
-
         Button buttonEquals = findViewById(R.id.button_equals);
         buttonEquals.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                numberTwo = Float.parseFloat(textViewResult.getText() + "");
+                numberTwo = Double.parseDouble(textViewResult.getText().toString() + "");
 
-                if ((arithmeticOperation == '+' && operationAddition)) {
+                if ((operationAddition)) {
                     textViewResult.setText(addition() + "");
                     operationAddition = false;
-                } else if ((arithmeticOperation == '-' && operationSubtract)) {
+                } else if ((operationSubtract)) {
                     textViewResult.setText(subtract() + "");
                     operationSubtract = false;
-                } else if ((arithmeticOperation == '*' && operatorMultiply)) {
+                } else if ((operatorMultiply)) {
                     textViewResult.setText(multiply() + "");
                     operatorMultiply = false;
-                } else if ((arithmeticOperation == '/' && operationDivide)) {
+                } else if ((operationDivide)) {
                     textViewResult.setText(divide() + "");
                     operationDivide = false;
                 }
-
-
             }
-
-
         });
-
-
-
-
+        Button buttonSettings = findViewById(R.id.button_settings);
+        buttonSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-
     //methods of operations
-
-    public float divide(){
+    public double divide(){
         return numberOne /= numberTwo;
     }
-
-    public float multiply(){
+    public double multiply(){
         return numberOne *= numberTwo;
     }
-
-    public float subtract(){
+    public double subtract(){
         return numberOne -= numberTwo;
     }
-
-    public float addition(){
+    public double addition(){
         return numberOne += numberTwo;
+    }
+
+    private int chooseTheme(int theme) {
+        switch (theme) {
+            case 2:
+                return R.style.DarkAppTheme;
+            case 1:
+                return R.style.LightAppTheme;
+            case 0:
+            default:
+                return R.style.DefaultAppTheme;
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        numberOne = savedInstanceState.getDouble("lastResult");
+        textViewResult.setText(numberOne + "");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putDouble("lastResult", numberOne);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
 

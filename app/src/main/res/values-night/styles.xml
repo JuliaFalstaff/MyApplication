@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="CustomButtonMaterial" parent="Widget.MaterialComponents.Button">
         <item name="materialThemeOverlay">@style/CustomButtonThemeOverlay</item>
     </style>
@@ -21,8 +20,6 @@
         <item name="android:textColor">@color/dark_white_theme</item>
     </style>
 
-
-
     <style name="CustomTextViewMaterial" parent="Widget.MaterialComponents.TextView">
         <item name="materialThemeOverlay">@style/CustomizeTextViewMaterial</item>
     </style>
@@ -35,5 +32,4 @@
         <item name="android:background">@color/dark_slate_theme</item>
         <item name="android:textColor">@color/green_theme</item>
     </style>
-
 </resources>
