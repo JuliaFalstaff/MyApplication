@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Calculator</string>
     <string name="_1">1</string>
@@ -19,9 +20,4 @@
     <string name="textView_result">TextViewResult</string>
     <string name="button_clear">C</string>
     <string name="_hint">0</string>
-    <string name="choose_theme">Apply Theme</string>
-    <string name="settings">Settings</string>
-    <string name="radioButton_lightTheme">Light Theme</string>
-    <string name="radioButton_DarkTheme">Dark Theme</string>
-    <string name="radioButton_DefaultTheme">Default Theme</string>
 </resources>

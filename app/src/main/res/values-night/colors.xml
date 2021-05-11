@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_navy_theme_main">#020c1b</color>
+    <color name="navy_theme">#0a192f</color>
+    <color name="light_navy_theme">#112240</color>
+    <color name="lightest_navy_theme">#233554</color>
+    <color name="dark_slate_theme">#495670</color>
+    <color name="slate_theme">#8892b0</color>
+    <color name="light_slate_theme">#a8b2d1</color>
+    <color name="dark_white_theme">#e6f1ff</color>
+    <color name="green_theme">#64ffda</color>
+</resources>

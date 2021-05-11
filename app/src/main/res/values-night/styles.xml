@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomButtonMaterial" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/CustomButtonThemeOverlay</item>
+    </style>
+    <style name="CustomButtonThemeOverlay">
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">@dimen/margin</item>
+        <item name="android:textColor">@color/dark_white_theme</item>
+    </style>
+
+    <style name="CustomButtonMaterialSecondary" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/CustomButtonThemeOverlaySecondary</item>
+    </style>
+    <style name="CustomButtonThemeOverlaySecondary">
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">@dimen/margin</item>
+        <item name="android:textColor">@color/dark_white_theme</item>
+    </style>
+
+    <style name="CustomTextViewMaterial" parent="Widget.MaterialComponents.TextView">
+        <item name="materialThemeOverlay">@style/CustomizeTextViewMaterial</item>
+    </style>
+    <style name="CustomizeTextViewMaterial">
+        <item name="android:textSize">@dimen/textViewSize</item>
+        <item name="android:hint">@string/_hint</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">@dimen/padding</item>
+        <item name="android:layout_margin">@dimen/margin</item>
+        <item name="android:background">@color/dark_slate_theme</item>
+        <item name="android:textColor">@color/green_theme</item>
+    </style>
+</resources>
