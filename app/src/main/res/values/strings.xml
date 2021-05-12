@@ -17,9 +17,5 @@
     <string name="add_up">+</string>
     <string name="_0">0</string>
     <string name="result">0</string>
-    <string name="calc">0</string>
-    <string name="textViewResult">Result</string>
-    <string name="textViewOperation">TextViewOperation</string>
-    <string name="EditTextNumbers">EditTextNumbers</string>
     <string name="button_clear">C</string>
 </resources>

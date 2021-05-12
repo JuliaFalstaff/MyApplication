@@ -8,7 +8,6 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-
     <Button
         android:id="@+id/button_point"
         android:layout_width="80dp"
@@ -246,37 +245,23 @@
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:text="@string/button_clear"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/button_equals"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button_0"
         app:layout_constraintTop_toBottomOf="@+id/button_0" />
 
-        <TextView
+    <TextView
         android:id="@+id/textView_result"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:hint="write your number"
         android:text="@string/result"
-        android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="#050505"
         android:textSize="36sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!--    <androidx.appcompat.widget.AppCompatImageView-->
-<!--        android:id="@+id/imageView_background"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:adjustViewBounds="true"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:srcCompat="@drawable/background_1080_1920" />-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>
